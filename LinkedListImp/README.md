@@ -8,8 +8,19 @@
 ### Functionalities added to Linked List:
 
 - __add(int val)__: It is used to add a elemennt in the list if the list is empty it makes a new node and assign that to head pointer else it takes the tail and add the new node to tail->next and make it the new tail.
+  - **Time Complexity:** $O(1)$, because it uses a direct tail pointer to append the node instantly without traversing the list.
+  - **Space Complexity:** $O(1)$, as it only allocates memory for a single new node.
+
 - __delete(int idx)__: It is used to delete the element in the linked list. It finds the element by searching it in the list if the list doesnt have any element returns the message "List is empty" otherwise delete the element at the given idx by removing it link to prev and next element and join its prev elements link to the next ones.
+  - **Time Complexity:** $O(N)$, where $N$ is the number of nodes up to the given index, because it must traverse the list sequentially to find the target position.
+  - **Space Complexity:** $O(1)$, as the deletion is performed in place using a few pointer modifications.
+
 - __search(int val)__: It finds the entered element and returns its index otherwise returns not found. It uses a simple loop and a variable node temp to move accross the list and chec if element exist or not.
+  - **Time Complexity:** $O(N)$, where $N$ is the total number of nodes in the list, since it may need to scan up to the entire list to find the value.
+  - **Space Complexity:** $O(1)$, because it only uses a single tracking pointer (`temp`) regardless of the list size.
+
 - __show()__ : A loop with a variable node temp that iterates the loop and print the values of the nodes one by one.
+  - **Time Complexity:** $O(N)$, where $N$ is the number of nodes in the list, as every node must be visited once to print its value.
+  - **Space Complexity:** $O(1)$, utilizing no additional scalable memory beyond a simple tracking pointer.
 
 
