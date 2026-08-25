@@ -2,7 +2,7 @@
 
 A **Doubly Linked List** is a linear data structure composed of sequentially linked records called nodes. Unlike a standard singly linked list, each node contains a data field along with two distinct reference pointers: one pointing to the next node in the sequence, and another pointing back to the previous node. This bidirectional linkage allows for traversal and manipulation of the list from both the beginning (head) and the end (tail).
 
-## Core Concepts
+## Data Structure Implementation
 
 * **Node Structure**: Every node acts as an independent object allocating memory for the stored element, a forward link (`next`), and a backward link (`prev`).
 * **Head Pointer**: Tracks the very first node of the list, serving as the entry point for forward traversal.
