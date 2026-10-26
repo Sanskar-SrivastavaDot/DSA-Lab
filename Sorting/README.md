@@ -71,3 +71,51 @@ $\mathcal{O}(n \log n)$ across all cases because the list is always divided into
 
 ## Space Complexity (SC)
 $\mathcal{O}(\log n)$ because it updates the list entirely in-place by changing internal pointers, using space only for the system execution call stack during recursion.
+
+## 5. Bubble Sort (Optimized Iterative Approach)
+
+Bubble Sort repeatedly steps through the array, compares adjacent elements, and **swaps them if they are in the wrong order**. This pass-through is repeated until the array is fully sorted.
+
+### Implementation Logic
+*   Run nested loops where the outer loop tracks the total number of passes and the inner loop compares adjacent elements.
+*   In each pass, compare `arr[j]` and `arr[j + 1]`. If `arr[j] > arr[j + 1]`, swap the elements.
+*   Optimize the process by using a boolean `swapped` tracking flag. Set it to `false` at the start of each pass.
+*   If a swap occurs, flip the flag to `true`. If the inner loop finishes a full pass with the flag remaining `false`, break early as the array is already sorted.
+
+### Time Complexity Explanation
+*   **Best Case: $\mathcal{O}(n)$** — Occurs when the input array is already sorted. The optimized tracking flag detects that no swaps were made during the very first pass and terminates the execution immediately.
+*   **Average & Worst Case: $\mathcal{O}(n^2)$** — Occurs when the array is randomly distributed or sorted in absolute reverse order. The algorithm must execute nested comparison passes, resulting in a quadratic number of total checks and swap operations.
+
+---
+
+## 6. Selection Sort (Bidirectional / Double Selection Approach)
+
+Selection Sort divides the array into sorted and unsorted boundaries. The bidirectional variant (Double Selection Sort) optimizes this by **finding both the minimum and maximum elements in a single pass**, moving them to their respective ends simultaneously.
+
+### Implementation Logic
+*   Maintain two pointers tracking the boundaries of the unsorted segment: `start` at the beginning and `end` at the tail.
+*   In each pass, iterate from `start` to `end` to find the indices of both the absolute minimum (`minIdx`) and absolute maximum (`maxIdx`) values.
+*   Swap the element at `start` with the element at `minIdx`.
+*   Check if the maximum element was originally sitting at the `start` index. If it was, update `maxIdx` to point to `minIdx` since its position was just shifted.
+*   Swap the element at `end` with the element at `maxIdx`.
+*   Narrow the unsorted workspace by incrementing `start` and decrementing `end`, repeating until the pointers cross.
+
+### Time Complexity Explanation
+*   **Best, Average, & Worst Case: $\mathcal{O}(n^2)$** — Although this bidirectional optimization cuts the total number of scanning sweeps in half ($\sim n/2$ passes), each pass must still scan every single remaining element to guarantee that the absolute minimum and maximum indices are found. Because this full scan runs regardless of the initial order of the data, the runtime scales quadratically across all execution scenarios.
+
+---
+
+## 7. Insertion Sort (Binary Search-Based Approach)
+
+Insertion Sort maintains a sorted partition at the front of the array and inserts new elements into their correct positions one by one. The binary variant optimizes this by **using binary search to find the insertion index** instead of scanning linearly backward.
+
+### Implementation Logic
+*   Iterate through the array starting from the second element (index 1), treating it as the target `key` to be inserted.
+*   Initialize a binary search zone within the sorted prefix array running from index `0` to `i - 1`.
+*   Execute a standard binary search loop (`low` to `high`) to isolate the exact target index where `key` belongs, terminating when `low` pinpoints the insertion boundary.
+*   Shift all elements from index `i - 1` down to `low` forward by one position to open up an empty slot.
+*   Drop the `key` element directly into the vacant slot at index `low`.
+
+### Time Complexity Explanation
+*   **Best Case: $\mathcal{O}(n)$** — When the array is completely sorted, the binary search finds the correct slot instantly, and the shifting loop condition resolves to zero operations. The algorithm simply verifies each element in linear time.
+*   **Average & Worst Case: $\mathcal{O}(n^2)$** — Using a binary search successfully cuts down the total comparison overhead to $\mathcal{O}(n \log n)$. However, the algorithm still requires shifting elements in memory to open slots for insertion. In the worst and average cases, shifting elements continues to demand quadratic $\mathcal{O}(n^2)$ operations, which dominates the overall runtime complexity.
