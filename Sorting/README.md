@@ -119,3 +119,47 @@ Insertion Sort maintains a sorted partition at the front of the array and insert
 ### Time Complexity Explanation
 *   **Best Case: $\mathcal{O}(n)$** — When the array is completely sorted, the binary search finds the correct slot instantly, and the shifting loop condition resolves to zero operations. The algorithm simply verifies each element in linear time.
 *   **Average & Worst Case: $\mathcal{O}(n^2)$** — Using a binary search successfully cuts down the total comparison overhead to $\mathcal{O}(n \log n)$. However, the algorithm still requires shifting elements in memory to open slots for insertion. In the worst and average cases, shifting elements continues to demand quadratic $\mathcal{O}(n^2)$ operations, which dominates the overall runtime complexity.
+
+## 8. Heap Sort
+
+Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure to arrange elements in ascending or descending order. It typically uses a Max Heap for ascending order and a Min Heap for descending order.
+
+### Implementation Logic
+
+Build a Max Heap from the given array, ensuring that every parent node is greater than or equal to its children.
+
+Start from the last non-leaf node and apply the Heapify operation to construct the Max Heap.
+
+Swap the root element (maximum element) with the last element of the heap.
+
+Reduce the heap size by one, excluding the already sorted element.
+
+Apply Heapify to the root node to restore the Max Heap property.
+
+Repeat the swapping and heapification process until all elements are sorted in ascending order.
+
+### Time Complexity Explanation
+
+Best, Average, & Worst Case: (\mathcal{O}(n \log n)) — Building the Max Heap takes (\mathcal{O}(n)) time. Each extraction operation requires (\mathcal{O}(\log n)) time to restore the heap property. Since there are (n-1) extraction operations, the overall time complexity remains (\mathcal{O}(n \log n)) in all cases.
+
+Auxiliary Space: (\mathcal{O}(1)) — Standard iterative Heap Sort sorts the array in place without requiring additional data structures.
+
+**## 9. Heap Sort Using Linked List**
+
+Heap Sort is a comparison-based sorting algorithm that uses a **Max Heap** data structure to arrange elements in ascending order. When implemented using a linked list, nodes are accessed through pointer traversal instead of direct array indexing.
+
+**### Implementation Logic**
+
+* Create a singly linked list containing the elements to be sorted.
+* Count the total number of nodes in the linked list.
+* Build a **Max Heap** by arranging elements such that every parent node is greater than or equal to its children.
+* Use the `getNode()` function to access nodes at specific indices through linked list traversal.
+* Swap the root node (maximum element) with the last node of the heap.
+* Reduce the heap size and apply the **Heapify** operation to restore the Max Heap property.
+* Repeat the extraction and heapification process until all elements are sorted in ascending order.
+
+**### Time Complexity Explanation**
+
+* **Best, Average, & Worst Case: \(\mathcal{O}(n^2 \log n)\)** — In this linked-list implementation, accessing a node at a particular index takes \(\mathcal{O}(n)\) time due to sequential traversal. Since heapify performs multiple such accesses, its cost can reach \(\mathcal{O}(n\log n)\). Repeating heapification across all elements results in \(\mathcal{O}(n^2\log n)\) worst-case time complexity.
+
+* **Auxiliary Space: \(\mathcal{O}(\log n)\)** — The recursive heapify function requires stack space proportional to the height of the heap.
