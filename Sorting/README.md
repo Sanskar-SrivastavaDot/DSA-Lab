@@ -144,11 +144,11 @@ Best, Average, & Worst Case: (\mathcal{O}(n \log n)) — Building the Max Heap t
 
 Auxiliary Space: (\mathcal{O}(1)) — Standard iterative Heap Sort sorts the array in place without requiring additional data structures.
 
-**## 9. Heap Sort Using Linked List**
+## **9. Heap Sort Using Linked List**
 
 Heap Sort is a comparison-based sorting algorithm that uses a **Max Heap** data structure to arrange elements in ascending order. When implemented using a linked list, nodes are accessed through pointer traversal instead of direct array indexing.
 
-**### Implementation Logic**
+### **Implementation Logic**
 
 * Create a singly linked list containing the elements to be sorted.
 * Count the total number of nodes in the linked list.
@@ -158,7 +158,7 @@ Heap Sort is a comparison-based sorting algorithm that uses a **Max Heap** data 
 * Reduce the heap size and apply the **Heapify** operation to restore the Max Heap property.
 * Repeat the extraction and heapification process until all elements are sorted in ascending order.
 
-**### Time Complexity Explanation**
+### **Time Complexity Explanation**
 
 * **Best, Average, & Worst Case: \(\mathcal{O}(n^2 \log n)\)** — In this linked-list implementation, accessing a node at a particular index takes \(\mathcal{O}(n)\) time due to sequential traversal. Since heapify performs multiple such accesses, its cost can reach \(\mathcal{O}(n\log n)\). Repeating heapification across all elements results in \(\mathcal{O}(n^2\log n)\) worst-case time complexity.
 
